@@ -9,8 +9,9 @@ import urllib3
 # Disable SSL warnings
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-st.set_page_config(layout="wide", page_title="Azure DevOps PR Dashboard")
-
+st.set_page_config(layout="wide", page_title="ADO PR v0.1")
+st.title("Azure DevOps Pull Requests Dashboard")
+#st.subheader("Mohsin Alam")
 # Sidebar configuration inputs
 st.sidebar.header("Configurations")
 
@@ -19,6 +20,8 @@ st.sidebar.info("""
 1. Enter your Azure DevOps organization, project, and Personal Access Token (PAT) in the fields below:
 2. Select date from for analysis period
 3. Click 'Fetch Pull Requests' to retrieve data
+
+For issues please contact: alam.mohsin@gmail.com
 """)
 
 # Try to get default values from secrets or environment variables
@@ -67,8 +70,6 @@ headers = {
     "Content-Type": "application/json"
 }
 
-# Main app
-st.title("Azure DevOps Pull Requests")
 
 if st.session_state.fetch_clicked:
     with st.spinner("Fetching pull requests..."):
@@ -168,4 +169,3 @@ if st.session_state.fetch_clicked:
 else:
     st.info("Click 'Fetch Pull Requests' to retrieve data")
     
-st.sidebar.info("""Developed by Mohsin Alam""")
